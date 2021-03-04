@@ -8,8 +8,8 @@ public struct KawaiiFlatWrapper<WrappedView: View, ColoredEdgeView: View>: View 
     private let coloredEdgeView: ColoredEdgeView
     
     public init(
-        cornerRadius: CGFloat = 8.0,
-        coloredEdge: Edge = .leading,
+        cornerRadius: CGFloat = KawaiiFlatDefaults.cornerRadius,
+        coloredEdge: Edge = KawaiiFlatDefaults.coloredEdge,
         @ViewBuilder coloredEdgeView: () -> ColoredEdgeView,
         @ViewBuilder wrappedView: () -> WrappedView
     ) {
@@ -68,5 +68,11 @@ struct KawaiiFlatWrapper_Previews: PreviewProvider {
                 }
             ).previewDisplayName(String(describing: $0))
         }
+        
+        Text("Test")
+            .background(Color.orange)
+            .kawaiiFlatWrapped {
+                Color.red
+            }
     }
 }
